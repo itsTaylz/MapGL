@@ -1,0 +1,3 @@
+main: io.github.itstaylz.mapgl.MapGlPlugin
+name: MapGL
+version: 0.0.1
