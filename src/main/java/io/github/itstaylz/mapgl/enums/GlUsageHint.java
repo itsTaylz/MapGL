@@ -1,6 +1,6 @@
 package io.github.itstaylz.mapgl.enums;
 
-public enum GlUsage {
+public enum GlUsageHint {
 
     GL_STREAM_DRAW,
     GL_STREAM_READ,

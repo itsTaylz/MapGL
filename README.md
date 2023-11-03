@@ -11,9 +11,9 @@ The project is currently at a **very early stage** consisting of limited functio
 ## Goals
 
 At this early stage of the project the goal is to add the basic functionality for drawing a colored triangle and quad, this includes:
-- OpenGL context
-- Vertex buffers (VBOs)
-- Vertex Arrays (VAOs)
+- [x] OpenGL context
+- [x] Vertex buffers (VBOs)
+Vertex Arrays (VAOs)
 - Element buffers (EBOs)
 - Shaders
 - Graphics pipeline (shaders, rasterization, etc)

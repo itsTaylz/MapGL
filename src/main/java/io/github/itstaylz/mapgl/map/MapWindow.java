@@ -1,7 +1,10 @@
-package io.github.itstaylz.mapgl;
+package io.github.itstaylz.mapgl.map;
 
+import io.github.itstaylz.mapgl.gl.MapGlContext;
 import org.bukkit.map.MapRenderer;
 import org.bukkit.map.MapView;
+
+import java.util.function.BiConsumer;
 
 public class MapWindow {
 
@@ -9,6 +12,7 @@ public class MapWindow {
 
     private final MapView mapView;
     private MapGlContext glContext = null;
+    private BiConsumer<MapWindow, MapGlContext> updateFunction = null;
 
     public MapWindow(MapView map) {
         this.mapView = map;
@@ -27,8 +31,17 @@ public class MapWindow {
             this.mapView.removeRenderer(renderer);
         }
         this.glContext = new MapGlContext(MAP_DIM, MAP_DIM);
-        this.mapView.addRenderer(new MapGlRenderer(glContext));
+        this.mapView.addRenderer(new MapGlRenderer(this));
         return this.glContext;
+    }
+
+    void onDraw() {
+        if (this.updateFunction != null && this.glContext != null)
+            this.updateFunction.accept(this, this.glContext);
+    }
+
+    public void setUpdateFunction(BiConsumer<MapWindow, MapGlContext> updateFunction) {
+        this.updateFunction = updateFunction;
     }
 
     public boolean hasGlContext() {

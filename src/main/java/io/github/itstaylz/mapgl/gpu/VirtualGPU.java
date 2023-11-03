@@ -1,4 +1,4 @@
-package io.github.itstaylz.mapgl;
+package io.github.itstaylz.mapgl.gpu;
 
 public class VirtualGPU {
 

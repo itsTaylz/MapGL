@@ -1,4 +1,4 @@
-package io.github.itstaylz.mapgl;
+package io.github.itstaylz.mapgl.gl;
 
 import io.github.itstaylz.mapgl.enums.GlBufferType;
 
