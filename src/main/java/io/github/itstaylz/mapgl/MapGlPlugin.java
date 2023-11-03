@@ -1,7 +1,7 @@
 package io.github.itstaylz.mapgl;
 
-import io.github.itstaylz.mapgl.enums.GlBufferType;
-import io.github.itstaylz.mapgl.enums.GlUsageHint;
+import io.github.itstaylz.mapgl.gl.enums.GlBufferType;
+import io.github.itstaylz.mapgl.gl.enums.GlUsageHint;
 import io.github.itstaylz.mapgl.gl.MapGlContext;
 import io.github.itstaylz.mapgl.map.MapWindow;
 import org.bukkit.Bukkit;
@@ -45,7 +45,7 @@ public class MapGlPlugin extends JavaPlugin implements Listener {
         FloatBuffer floatBuffer = buffer.asFloatBuffer();
         floatBuffer.put(triangle_data);
         context.glBufferData(GlBufferType.GL_ARRAY_BUFFER, buffer, GlUsageHint.GL_STATIC_DRAW);
-        Bukkit.broadcastMessage("VGPU used memory: " + context.getVGpu().getMemory().getUsedMemory());
+        //Bukkit.broadcastMessage("VGPU used memory: " + context.getVGpu().getMemory().getUsedMemory());
     }
 
     private void onUpdate(MapWindow window, MapGlContext context) {

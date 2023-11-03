@@ -1,4 +1,4 @@
-package io.github.itstaylz.mapgl.enums;
+package io.github.itstaylz.mapgl.gl.enums;
 
 public enum GlBufferType {
 

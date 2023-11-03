@@ -1,5 +1,7 @@
 package io.github.itstaylz.mapgl.gpu;
 
+import io.github.itstaylz.mapgl.gl.VertexArrayData;
+
 import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +9,12 @@ import java.util.Map;
 public class VirtualGPUMemory {
 
     private final Map<Integer, ByteBuffer> buffers = new HashMap<>();
+    private final Map<Integer, VertexArrayData> vertexArrays = new HashMap<>();
     private long usedMemory = 0L;
+
+    public long getUsedMemory() {
+        return this.usedMemory;
+    }
 
     public int genBuffer() {
         int id = buffers.size() + 1;
@@ -39,8 +46,15 @@ public class VirtualGPUMemory {
         return this.buffers.get(id);
     }
 
-    public long getUsedMemory() {
-        return this.usedMemory;
+    public int genVertexArray() {
+        int id = vertexArrays.size() + 1;
+        VertexArrayData data = new VertexArrayData();
+        vertexArrays.put(id, data);
+        return id;
+    }
+
+    public void enableVertexAttribArray(int vao, int index) {
+        this.vertexArrays.get(0).enableAttribPointerArray(index);
     }
 
 }

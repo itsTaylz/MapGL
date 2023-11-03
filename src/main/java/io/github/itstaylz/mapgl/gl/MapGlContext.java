@@ -1,7 +1,8 @@
 package io.github.itstaylz.mapgl.gl;
 
-import io.github.itstaylz.mapgl.enums.GlBufferType;
-import io.github.itstaylz.mapgl.enums.GlUsageHint;
+import io.github.itstaylz.mapgl.gl.enums.GlBufferType;
+import io.github.itstaylz.mapgl.gl.enums.GlDataType;
+import io.github.itstaylz.mapgl.gl.enums.GlUsageHint;
 import io.github.itstaylz.mapgl.gpu.VirtualGPU;
 
 import java.awt.*;
@@ -93,5 +94,22 @@ public class MapGlContext {
         if (current == 0)
             throw new RuntimeException();
         this.vGpu.getMemory().setBufferData(current, data);
+    }
+
+    public int glGenVertexArray() {
+        return this.vGpu.getMemory().genVertexArray();
+    }
+
+    public void bindVertexArray(int vao) {
+        this.glState.setBoundedVertexArray(vao);
+    }
+
+    public void glEnableVertexAttribArray(int index) {
+        int vao = this.glState.getBoundedVertexArray();
+        this.vGpu.getMemory().enableVertexAttribArray(vao, index);
+    }
+
+    public void glVertexAttribPointer(int index, int size, GlDataType dataType, boolean normalized, int stride, int offset) {
+
     }
 }
